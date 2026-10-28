@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0d1420">
+<title>金币之路 · 3D 跑酷</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="fatal"></div>
+
+<header id="hud">
+  <div class="hud-left">
+    <div class="coin-chip">
+      <span class="coin-icon"></span>
+      <span id="coin-count">0 / 0</span>
+    </div>
+    <div class="gate-chip">
+      终点门 <b id="gate-state" class="locked">锁定</b>
+    </div>
+  </div>
+  <div class="hud-right">
+    <span id="fps">--</span>
+    <button data-action="restart" class="ghost" title="重新开始">↻</button>
+  </div>
+</header>
+
+<div id="coin-track"><div id="coin-bar"></div></div>
+<div id="progress"><div id="progress-fill"></div></div>
+
+<div id="toast"></div>
+
+<div id="controls">
+  <button data-action="left" class="pad">‹</button>
+  <button data-action="jump" class="pad jump">跳</button>
+  <button data-action="right" class="pad">›</button>
+</div>
+
+<div id="overlay" class="hidden">
+  <div class="card">
+    <h1 id="ov-title">金币之路</h1>
+    <p id="ov-sub"></p>
+    <button id="ov-btn" data-action="start">开始跑酷</button>
+    <p class="tip">键盘：← → 换道，空格跳跃，R 重开</p>
+  </div>
+</div>
+
+<script src="game.js" type="module"></script>
+</body>
+</html>

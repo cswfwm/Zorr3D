@@ -1,0 +1,13 @@
+# 构建产物
+app/build/
+.gradle/
+dist/*.bundle.js
+
+# 签名密钥与本地环境（不入库）
+app/keystore.p12
+local.properties
+
+# 编辑器与系统文件
+.DS_Store
+*.swp
+node_modules/

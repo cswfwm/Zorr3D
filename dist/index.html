@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14161a">
+<title>Zorr3D</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center;
+    background: radial-gradient(circle at 50% 0%, #1e2637, #10131a 62%);
+    color: #d8dde6;
+    font: 15px/1.5 -apple-system, "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    padding: 28px;
+  }
+  .wrap { width: min(720px, 100%); }
+  h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: .5px; }
+  h1 span { color: #4c9aff; }
+  .sub { color: #8a93a3; margin: 0 0 28px; font-size: 14px; }
+  .cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  a.card {
+    display: block; padding: 20px; border-radius: 14px;
+    background: #1c1f25; border: 1px solid #2e333d;
+    color: inherit; text-decoration: none; transition: border-color .15s, transform .15s;
+  }
+  a.card:hover { border-color: #4c9aff; transform: translateY(-2px); }
+  .card h2 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: #8a93a3; font-size: 13px; line-height: 1.55; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px;
+         background: #23272f; color: #8a93a3; margin-bottom: 10px; }
+  footer { margin-top: 26px; color: #5d6675; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Zorr<span>3D</span></h1>
+  <p class="sub">自研 WebGL2 轻量 3D 引擎 · 编辑器与游戏共用同一渲染核心</p>
+  <div class="cards">
+    <a class="card" href="editor.html">
+      <span class="tag">工具</span>
+      <h2>3D 编辑器</h2>
+      <p>层级、变换 Gizmo、PBR 材质、阴影与泛光、glTF/OBJ 导入、场景存档。</p>
+    </a>
+    <a class="card" href="runner.html">
+      <span class="tag">游戏</span>
+      <h2>金币之路</h2>
+      <p>3D 跑酷：三车道换道跳跃，收集全部金币才会开启终点门。</p>
+    </a>
+  </div>
+  <footer>纯静态产物，无外部依赖，可离线运行。</footer>
+</div>
+</body>
+</html>

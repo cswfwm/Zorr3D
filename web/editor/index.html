@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Zorr3D 编辑器</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="viewport"></canvas>
+
+<div id="hud">
+  <div id="toast"></div>
+  <div id="drop-hint">松开以导入 .glb / .gltf / .obj</div>
+</div>
+
+<header id="topbar">
+  <span class="brand">Zorr3D</span>
+  <button data-act="new" title="新建场景">新建</button>
+  <button data-act="open" title="打开场景 JSON">打开</button>
+  <button data-act="save" title="保存场景到文件">保存</button>
+  <span class="sep"></span>
+  <button data-act="add" title="添加物体">＋ 添加</button>
+  <button data-act="import" title="导入模型">导入模型</button>
+  <span class="sep"></span>
+  <button data-act="undo" title="撤销 (Ctrl+Z)">↶</button>
+  <button data-act="redo" title="重做 (Ctrl+Shift+Z)">↷</button>
+  <span class="sep"></span>
+  <button data-act="play" id="btn-play" title="运行/停止">▶ 运行</button>
+  <span class="grow"></span>
+  <span id="fps">-- FPS</span>
+  <button data-act="panel-view" class="icon" title="显示选项">⚙</button>
+  <button data-act="panel-outliner" class="icon" title="层级">☰</button>
+  <button data-act="panel-inspector" class="icon" title="属性">▤</button>
+</header>
+
+<aside id="outliner" class="panel">
+  <div class="panel-title">层级<button class="x" data-act="close-outliner">×</button></div>
+  <div id="tree"></div>
+</aside>
+
+<aside id="inspector" class="panel">
+  <div class="panel-title">属性<button class="x" data-act="close-inspector">×</button></div>
+  <div id="inspector-body"></div>
+</aside>
+
+<aside id="viewpanel" class="panel hidden">
+  <div class="panel-title">显示与画质<button class="x" data-act="close-view">×</button></div>
+  <div id="view-body"></div>
+</aside>
+
+<div id="add-menu" class="popover hidden"></div>
+
+<div id="toolbar">
+  <button data-tool="select" class="active" title="选择 (Q)">Q 选择</button>
+  <button data-tool="move" title="移动 (W)">W 移动</button>
+  <button data-tool="rotate" title="旋转 (E)">E 旋转</button>
+  <button data-tool="scale" title="缩放 (R)">R 缩放</button>
+  <span class="sep"></span>
+  <button data-gizmo="world" id="btn-space" title="切换世界/局部坐标">世界</button>
+  <button data-act="frame" title="聚焦选中 (F)">聚焦</button>
+</div>
+
+<footer id="statusbar">
+  <span id="status-text">就绪</span>
+  <span class="grow"></span>
+  <span id="stats"></span>
+</footer>
+
+<input type="file" id="file-open" accept=".json,.z3d,application/json" hidden>
+<input type="file" id="file-model" accept=".glb,.gltf,.obj" hidden>
+
+<script src="app.js"></script>
+</body>
+</html>

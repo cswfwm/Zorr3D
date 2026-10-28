@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'com.zorr3d'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.zorr3d"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    // 签名信息从 gradle.properties / 环境变量读取，密钥文件与口令都不入库
+    signingConfigs {
+        release {
+            def storePath = project.findProperty("RELEASE_STORE_FILE")
+                    ?: System.getenv("RELEASE_STORE_FILE")
+            if (storePath != null) {
+                // 相对路径按仓库根目录解析（Gradle 的 file() 默认以模块目录为基准）
+                storeFile rootProject.file(storePath)
+                storeType "PKCS12"
+                storePassword project.findProperty("RELEASE_STORE_PASSWORD")
+                        ?: System.getenv("RELEASE_STORE_PASSWORD")
+                keyAlias project.findProperty("RELEASE_KEY_ALIAS") ?: "zorr3d"
+                keyPassword project.findProperty("RELEASE_KEY_PASSWORD")
+                        ?: System.getenv("RELEASE_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            // WebView 里跑的是打包好的静态资源，不需要代码混淆
+            minifyEnabled false
+            shrinkResources false
+            // 未配置签名时构建 unsigned APK，方便他人直接 clone 后试编译
+            if (signingConfigs.release.storeFile != null) {
+                signingConfig signingConfigs.release
+            }
+        }
+        debug {
+            if (signingConfigs.release.storeFile != null) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // 编辑器单文件较大且要按原样读取，关闭压缩
+    androidResources {
+        noCompress 'html'
+    }
+}
+
+dependencies {
+    // 不引入任何运行时依赖：外壳只用系统 WebView
+}
