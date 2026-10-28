@@ -39,6 +39,11 @@ glTF/OBJ 拖入导入、场景存取、角色动作切换与时间轴逐帧预�
 三车道第三人称跑酷。金币必须**全部**收集，终点门才会滑开；没集齐时门是实体墙，会挡住你并提示还差几枚。
 玩家是同一套人形骨骼，跑动播放奔跑动作、起跳切换跳跃动作。
 
+## 下载
+
+- **安卓 APK**：[Zorr3D-android14.apk](https://github.com/cswfwm/Zorr3D/releases/download/v1.0.0/Zorr3D-android14.apk)（约 222 KB，minSdk 26）
+- **网页版**：[zorr3d-web.zip](https://github.com/cswfwm/Zorr3D/releases/download/v1.0.0/zorr3d-web.zip)，解压后直接打开 `index.html`
+
 ## 快速开始
 
 ```sh
